@@ -1,0 +1,144 @@
+@font-face {
+    font-family: Lucida;
+    src: url('resources/fonts/Monaco.ttf');
+  }
+  
+  * {
+    font-family: Arial;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0px;
+    background-color: #f8f8f8;
+  }
+  div#game {
+    /*border: 1px solid black;*/
+    height: 336px;
+    position: relative;
+    width: 336px;
+    margin: auto auto;
+    margin-top: 50px;
+  }
+
+  li.tile {
+    display: inline-block;
+    height: 110px;
+    width: 110px;
+    border: 1px solid black;
+    position: absolute;
+    background-color: rgb(61, 200, 255);
+    transition: 0.3s all;
+    cursor: pointer;
+    background-size: contain;
+  }
+
+  /* .number1 {
+    transition: 0.3s all;left: 110px;
+  }
+
+  .number2 {
+    transition: 0.3s all;left: 220px;
+  }
+
+  .number3 {
+    transition: 0.3s all;top: 110px;
+  }
+
+  .number4 {
+    transition: 0.3s all;top: 110px;left: 110px;
+  }
+
+  .number5 {
+    transition: 0.3s all;top: 110px;left: 220px;
+  }
+
+  .number6 {
+    transition: 0.3s all;top: 220px;
+  }
+
+  .number7 {
+    transition: 0.3s all;top: 220px;left: 110px;
+  } */
+
+  .blankTile {
+    cursor: default;
+    border: none;
+    background-color: white;
+    z-index: -1;
+    transition: 0.3s all;
+    top: 220px;
+    left: 220px;
+  }
+  
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #snackbar1 {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: #333; /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: 1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar1.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

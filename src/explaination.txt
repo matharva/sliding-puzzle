@@ -1,0 +1,82 @@
+Data Structures used:
+1. Priority Queue
+2. Stack
+
+Algorithm -> BFS (Manhattan + Heuristic)
+
+Notes on Heuristic Function -> also called as Informed Search
+8 Puzzle Problem -> takes order of O(b^d) -> Approx 3^20 search space is possible
+Such problems are called as NP(Non-Polynomial Problem)
+This method is faster because instead of searching for all the possible solutions, 
+it only checks the solution that has the smallest heuristic value
+This is method is used when we want to solve a non polynomial problem in polynomial time
+Manhattan Distance -> used for vertical and horizontal distance, calculates the distance from current position 
+to the final position (where it is to where it should be) for all the tiles in the matrix  
+
+Functions used:
+
+// When the screen is loaded
+
+window.onload() -> main function
+1. Shuffles the grid 
+2. Checks for unsolvable state -> isSolvable()
+3. Sets the game
+
+shuffle()
+1. Shuffles the grid variable which is a list of index all the tiles ie-[0-8]
+2. For every element, picks a random index from grid and swap position with it
+3. This is created a shuffling effect
+
+setPos()
+1. Sets the position of the time on the screen 
+2. It uses margins to set the tile in its place
+3. Loads the images onto the tile
+
+
+// When you press the solve button
+When you click on the solve button, it triggers solvePuzzleEfficient()
+
+solvePuzzleEfficient()
+Why is new used while PriorityQueue is initialized
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+1. Checks it the state that has been randomly generated is not the solution itself using checkState()
+2. initializes a PriorityQueue in var pq
+3. Creates an object 'root' and push the root in the priority queue
+4. Does the normal BFS
+    4.1 dequeue the top element  
+    4.2 Create all the four conditions(move up, down, left, right)
+    4.3 Create an object tempNode for each condition with all the information and parent as the previous state
+    4.4 Push the node in the PriorityQueue
+5. Repeat step 4 until you reach the finalState ie- min.cost == 0 
+6. Once the finalState is achieved, it prints the steps in the console and goes into performMoves
+
+moveCost()
+1. Calculates the heuristic value for that particular state
+2. Checks for conflict state(When two tiles are located on each others position) ie- if 1 is at pos 4 and 4 at pos 1
+
+checkState()
+1. Checks if a particular state is valid or not ie- within the bounds of [0-2]
+
+
+performMoves()
+1. Inputs the final state and its child (for the final state it is NULL)
+2. Recursively goes to the root node by going into the parent node of the current node
+3. Once it is at the root node, compares the position of the blank tile of the current node and its child
+and accordingly make an array move consisting of all the moves
+4. Once this is done, calls solvePuzzle()
+
+solvePuzzle()
+1. Recursively calls back itself until the moves array is not exhausted 
+2. Calls the moveWinTile during each recursion
+
+moveWinTile()
+1. Slides the blank tile in the position that is given in the move array
+
+
+// When you press the undo button
+
+An undo stack has been maintained in which each correct move towards the finalState is pushed
+
+undo()
+1. Pops the top element of the stack and does the opposite of what go the tile there
+
